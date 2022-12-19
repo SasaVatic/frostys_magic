@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Snowy</title>
+  </head>
+
+  <body>
+    <section>
+      <img src="./img/snowy_day.jpg" alt="" id="snowy" />
+      <div class="hat-box">
+        <img src="./img/santa_claus_hat.png" alt="" id="hat" />
+      </div>
+      <div class="snowfall">
+        <span class="snowflake" style="--i: 34"></span>
+        <span class="snowflake" style="--i: 23"></span>
+        <span class="snowflake" style="--i: 65"></span>
+        <span class="snowflake" style="--i: 49"></span>
+        <span class="snowflake" style="--i: 55"></span>
+        <span class="snowflake" style="--i: 6"></span>
+        <span class="snowflake" style="--i: 8"></span>
+        <span class="snowflake" style="--i: 18"></span>
+        <span class="snowflake" style="--i: 54"></span>
+        <span class="snowflake" style="--i: 35"></span>
+        <span class="snowflake" style="--i: 41"></span>
+        <span class="snowflake" style="--i: 26"></span>
+        <span class="snowflake" style="--i: 27"></span>
+        <span class="snowflake" style="--i: 28"></span>
+        <span class="snowflake" style="--i: 29"></span>
+        <span class="snowflake" style="--i: 7"></span>
+        <span class="snowflake" style="--i: 3"></span>
+        <span class="snowflake" style="--i: 12"></span>
+        <span class="snowflake" style="--i: 30"></span>
+        <span class="snowflake" style="--i: 9"></span>
+        <span class="snowflake" style="--i: 67"></span>
+        <span class="snowflake" style="--i: 11"></span>
+        <span class="snowflake" style="--i: 36"></span>
+        <span class="snowflake" style="--i: 48"></span>
+        <span class="snowflake" style="--i: 50"></span>
+        <span class="snowflake" style="--i: 20"></span>
+        <span class="snowflake" style="--i: 10"></span>
+        <span class="snowflake" style="--i: 13"></span>
+        <span class="snowflake" style="--i: 14"></span>
+        <span class="snowflake" style="--i: 22"></span>
+        <span class="snowflake" style="--i: 69"></span>
+        <span class="snowflake" style="--i: 64"></span>
+        <span class="snowflake" style="--i: 70"></span>
+        <span class="snowflake" style="--i: 39"></span>
+        <span class="snowflake" style="--i: 2"></span>
+        <span class="snowflake" style="--i: 45"></span>
+        <span class="snowflake" style="--i: 46"></span>
+        <span class="snowflake" style="--i: 47"></span>
+        <span class="snowflake" style="--i: 68"></span>
+        <span class="snowflake" style="--i: 57"></span>
+        <span class="snowflake" style="--i: 58"></span>
+        <span class="snowflake" style="--i: 59"></span>
+        <span class="snowflake" style="--i: 60"></span>
+        <span class="snowflake" style="--i: 56"></span>
+        <span class="snowflake" style="--i: 62"></span>
+        <span class="snowflake" style="--i: 19"></span>
+        <span class="snowflake" style="--i: 4"></span>
+        <span class="snowflake" style="--i: 21"></span>
+        <span class="snowflake" style="--i: 37"></span>
+        <span class="snowflake" style="--i: 40"></span>
+        <span class="snowflake" style="--i: 42"></span>
+        <span class="snowflake" style="--i: 43"></span>
+        <span class="snowflake" style="--i: 52"></span>
+        <span class="snowflake" style="--i: 24"></span>
+        <span class="snowflake" style="--i: 44"></span>
+        <span class="snowflake" style="--i: 5"></span>
+        <span class="snowflake" style="--i: 25"></span>
+        <span class="snowflake" style="--i: 15"></span>
+        <span class="snowflake" style="--i: 61"></span>
+        <span class="snowflake" style="--i: 16"></span>
+        <span class="snowflake" style="--i: 17"></span>
+        <span class="snowflake" style="--i: 31"></span>
+        <span class="snowflake" style="--i: 1"></span>
+        <span class="snowflake" style="--i: 33"></span>
+        <span class="snowflake" style="--i: 32"></span>
+        <span class="snowflake" style="--i: 38"></span>
+        <span class="snowflake" style="--i: 51"></span>
+        <span class="snowflake" style="--i: 53"></span>
+        <span class="snowflake" style="--i: 66"></span>
+        <span class="snowflake" style="--i: 63"></span>
+      </div>
+    </section>
+    <audio id="music" loop>
+      <source src="/audio/kalimba_winter.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script>
+      const hatBox = document.querySelector(".hat-box");
+      const music = document.getElementById("music");
+      let isRotated = false;
+      let scale = 1;
+
+      const mouse = {
+        x: null,
+        y: null,
+      };
+
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+        hatBox.style.left = mouse.x + "px";
+        hatBox.style.top = mouse.y + "px";
+        if (isRotated) {
+          hatBox.style.transform = `translate(-50%, -50%) rotateY(-180deg) scale(${scale})`;
+        } else {
+          hatBox.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        }
+      });
+
+      window.addEventListener("wheel", function (e) {
+        if (e.wheelDelta > 0 && scale < 1.2 && e.shiftKey) {
+          scale += 0.05;
+          if (isRotated) {
+            hatBox.style.transform = `translate(-50%, -50%) rotateY(-180deg) scale(${scale})`;
+          } else {
+            hatBox.style.transform = `translate(-50%, -50%) scale(${scale})`;
+          }
+        }
+        if (e.wheelDelta < 0 && scale > 0.5 && e.shiftKey) {
+          scale -= 0.05;
+          if (isRotated) {
+            hatBox.style.transform = `translate(-50%, -50%) rotateY(-180deg) scale(${scale})`;
+          } else {
+            hatBox.style.transform = `translate(-50%, -50%) scale(${scale})`;
+          }
+        }
+      });
+
+      window.addEventListener("click", () => {
+        isRotated = !isRotated;
+        music.play();
+      });
+    </script>
+  </body>
+</html>

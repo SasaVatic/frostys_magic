@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: none;
+  background-color: black;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+#snowy {
+  width: 100%;
+  height: 100%;
+}
+
+.hat-box {
+  position: absolute;
+  width: 40%;
+}
+
+#hat {
+  max-width: 100%;
+}
+
+.snowfall {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.snowflake {
+  position: relative;
+  width: 5px;
+  height: 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: snowfall 20s linear infinite;
+  animation-duration: calc(100s / var(--i));
+  filter: blur(2px);
+  transform: scale(calc(var(--i) * 0.05));
+}
+
+@keyframes snowfall {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: 25%;
+  }
+  50% {
+    top: 50%;
+  }
+  75% {
+    top: 75%;
+  }
+  100% {
+    top: 100%;
+  }
+}
